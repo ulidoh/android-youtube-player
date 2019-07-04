@@ -29,6 +29,7 @@ class IFramePlayerOptions private constructor(private val playerOptions: JSONObj
             private const val IV_LOAD_POLICY = "iv_load_policy"
             private const val MODEST_BRANDING = "modestbranding"
             private const val CC_LOAD_POLICY = "cc_load_policy"
+            private const val HL = "hl"
         }
 
         private val builderOptions = JSONObject()
@@ -44,6 +45,7 @@ class IFramePlayerOptions private constructor(private val playerOptions: JSONObj
             addInt(IV_LOAD_POLICY, 3)
             addInt(MODEST_BRANDING, 1)
             addInt(CC_LOAD_POLICY, 0)
+            addString(HL, "en")
         }
 
         fun build(): IFramePlayerOptions {
@@ -84,6 +86,15 @@ class IFramePlayerOptions private constructor(private val playerOptions: JSONObj
          */
         fun ccLoadPolicy(ccLoadPolicy: Int): Builder {
             addInt(CC_LOAD_POLICY, ccLoadPolicy)
+            return this
+        }
+        
+        /**
+         * Controls language setting for the UI and default captions.
+         * @param hl set to two-letter language ISO 639-1-Code (i.e. en for english, de for german, etc.).
+         */
+        fun hl(hl: String): Builder {
+            addString(HL, hl)
             return this
         }
 
